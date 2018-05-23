@@ -3,6 +3,17 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:orientation="vertical">
+	android:orientation="horizontal">
+
+	<TextView
+		android:id="@+id/txvUserMessage"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:textSize="30sp"
+		android:textStyle="bold"
+		android:textColor="#f40d30"
+		android:textAlignment="center"
+		android:layout_margin="20dp"
+		android:text="TextView"/>
 
 </LinearLayout>
