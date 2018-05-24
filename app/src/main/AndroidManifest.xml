@@ -20,7 +20,7 @@
 
 		<activity android:name=".SecondActivity" />
 
-		<activity android:name=".HobbiesActivity" /> 
+		<activity android:name=".HobbiesActivity" />
 
 	</application>
 
