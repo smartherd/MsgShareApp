@@ -6,13 +6,16 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.smartherd.msgshareapp.R
 import com.smartherd.msgshareapp.models.Hobby
 import com.smartherd.msgshareapp.showToast
 import kotlinx.android.synthetic.main.list_item.view.*
 
 class HobbiesAdapter(val context: Context, private val hobbies: List<Hobby>) : RecyclerView.Adapter<HobbiesAdapter.MyViewHolder>() {
+
+	companion object {
+		val TAG: String = HobbiesAdapter::class.java.simpleName
+	}
 
 	override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
 		val view = LayoutInflater.from(context).inflate(R.layout.list_item, parent, false)
@@ -35,25 +38,30 @@ class HobbiesAdapter(val context: Context, private val hobbies: List<Hobby>) : R
 
 		init {
 			itemView.setOnClickListener {
-				context.showToast(currentHobby!!.title + " Clicked !")
-				Toast.makeText(context, currentHobby!!.title + " Clicked !", Toast.LENGTH_SHORT).show()
+				currentHobby?.let {
+					context.showToast(currentHobby!!.title + " Clicked !")
+				}
 			}
 
 			itemView.imgShare.setOnClickListener {
 
-				val message: String = "My hobby is: " + currentHobby!!.title
+				currentHobby?.let {
+					val message: String = "My hobby is: " + currentHobby!!.title
 
-				val intent = Intent()
-				intent.action = Intent.ACTION_SEND
-				intent.putExtra(Intent.EXTRA_TEXT, message)
-				intent.type = "text/plain"
+					val intent = Intent()
+					intent.action = Intent.ACTION_SEND
+					intent.putExtra(Intent.EXTRA_TEXT, message)
+					intent.type = "text/plain"
 
-				context.startActivity(Intent.createChooser(intent, "Please select app: "))
+					context.startActivity(Intent.createChooser(intent, "Please select app: "))
+				}
 			}
 		}
 
 		fun setData(hobby: Hobby?, pos: Int) {
-			itemView.txvTitle.text = hobby!!.title
+			hobby?.let {
+				itemView.txvTitle.text = hobby.title
+			}
 
 			this.currentHobby = hobby
 			this.currentPosition = pos
