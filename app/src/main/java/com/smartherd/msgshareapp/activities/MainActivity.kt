@@ -1,10 +1,11 @@
-package com.smartherd.msgshareapp
+package com.smartherd.msgshareapp.activities
 
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.widget.Toast
+import com.smartherd.msgshareapp.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -44,6 +45,5 @@ class MainActivity : AppCompatActivity() {
 			val intent = Intent(this, HobbiesActivity::class.java)
 			startActivity(intent)
 		}
-
 	}
 }
